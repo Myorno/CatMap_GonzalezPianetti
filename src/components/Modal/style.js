@@ -5,10 +5,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
     modalStyle: {
+        backgroundColor: "#fae3d4",
         margin: 20,
-        backgroundColor: "white",
         borderRadius: 20,
         padding: 40,
         alignItems: "center",
@@ -22,7 +23,23 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     modalTextStyle: {
-        fontSize: 30,
+        fontSize: 24,
+        color: "#332e2d",
+        textAlign: "center"
+    },
+    modalButton: {
+        marginTop: 10,
+    },
+    textCustom: {
+        color: "#ffffff",
+        padding: 10,
+        textAlign: "center",
+        width: 100,
+        fontSize: 20,
+    },
+    buttonCustom: {
+        backgroundColor: "#ab6f9e",
+        borderRadius: 10
     },
 });
 

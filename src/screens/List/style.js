@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
       marginBottom: 30,
       fontSize: 40,
       fontWeight: "500",
-      color: "#1E283C",
+      color: "#ab6f9e",
     },
     addItemContainer: {
       flexDirection: "row",
@@ -23,11 +23,20 @@ const styles = StyleSheet.create({
       width: 200,
     },
     listContainer: {
-      flex: 2,
       marginHorizontal: 30,
       marginTop: 20,
       padding: 3,
-    }
+    },
+    buttonCustom: {
+      alignItems: 'center',
+      backgroundColor: "#ab6f9e",
+      borderRadius:10,
+    },
+    textCustom: {
+      color: "#ffffff",
+      textAlign: "center",
+      padding: 10,
+  },
   });
 
   export default styles;

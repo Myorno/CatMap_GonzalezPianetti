@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { View, FlatList } from 'react-native';
-import { Modal, Item } from "../../components";
+import React, { useState } from "react";
+import { View, FlatList, Text, TextInput, TouchableHighlight } from 'react-native';
+import { Modal, CustomButton, ListItem } from "../../components";
+import styles from './style';
 
 const List = ({ }) => {
 
@@ -11,11 +12,9 @@ const List = ({ }) => {
 
     const onHandleChangeText = text => {
         setTextItem(text);
-        console.log(text);
     };
 
     const addItem = () => {
-        console.log("aqui agregamos el item", textItem);
         setList(prevState => [
             ...prevState,
             { name: textItem, id: Math.random().toString() },
@@ -24,18 +23,17 @@ const List = ({ }) => {
     };
 
     const onHandleModal = item => {
-        console.log("en esta funcion seteo el item y abro el modal");
         setItemSelected(item);
         setModalVisible(true);
     };
 
     const onHandleDelete = item => {
-        console.log("eliminar este item", item);
         setList(prevState =>
             prevState.filter(element => element.name !== item.name)
         );
         setModalVisible(false);
     };
+
 
     return (
         <View>
@@ -48,13 +46,18 @@ const List = ({ }) => {
                         onChangeText={onHandleChangeText}
                         value={textItem}
                     />
-                    <Button title="Click here" onPress={addItem} />
+                    <CustomButton
+                        onPress={addItem}
+                        style={styles}
+                        title={"Add cat"}
+                        disabled={textItem === ""} />
+
                 </View>
             </View>
             <View style={styles.listContainer}>
                 <FlatList
                     data={list}
-                    renderItem={<Item onHandleDelete={onHandleDelete} />}
+                    renderItem={({ item }) => (<ListItem item={item} onHandleModal={onHandleModal} />)}
                     keyExtractor={item => item.id}
                 />
             </View>
