@@ -1,30 +1,46 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
 
 const styles = StyleSheet.create({
-    renderItemStyle: {
+    renderItem: {
         height: 50,
         flexDirection: "row",
         marginBottom: 25,
-        borderLeftColor: "#957dad",
+        borderLeftColor: colors.secondary,
         borderLeftWidth: 10,
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
         padding: 10,
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "#e0bbe4",
-        color: "#332e2d",
+        backgroundColor: colors.terciary,
+        color: colors.primary,
+        fontFamily: fonts.main,
     },
     textRenderItem: {
-        color: "#332e2d",
-        paddingHorizontal: 10,
+        color: colors.primary,
+        fontWeight: 600,
     },
-    textCustom: {
-        color: "#332e2d",
-        paddingHorizontal: 10,
+    deleteText: {
+        color: colors.secondary,
+        paddingHorizontal: 5,
     },
-    buttonCustom: {
+    deleteContainer: {
         backgroundColor: "transparent",
+    },
+    viewText: {
+        color: colors.secondary,
+        paddingHorizontal: 5,
+    },
+    viewContainer: {
+        backgroundColor: "transparent",
+    },
+    actionsContainer: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "30%"
     },
 });
 

@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, View, Button, Modal } from 'react-native';
+import React from 'react';
+import { Text, View, Modal } from 'react-native';
 import styles from './style';
-import { CustomButton } from "../index";
+import { CustomButton } from '..';
 
-const Item = ({ isVisible, actionDeleteItem, itemSelected }) => {
+const Item = ({ isVisible, onCloseModal, actionDeleteItem, itemSelected }) => {
 
     return (
         <Modal
@@ -12,16 +12,25 @@ const Item = ({ isVisible, actionDeleteItem, itemSelected }) => {
             transparent={true}
             presentationStyle="overFullScreen">
             <View style={styles.modalContainer}>
-                <View style={styles.modalStyle}>
+                <View style={styles.modal}>
+                    <View style={styles.closeContainer}>
+                        <CustomButton
+                            onPress={() => onCloseModal()}
+                            title={"X"}
+                            innerStyle={styles.closeButtonText}
+                            containerStyle={styles.closeButtonContainer}
+                        />
+                    </View>
                     <Text
-                        style={styles.modalTextStyle} >
+                        style={styles.modalText} >
                         {`Do you really want to delete ${itemSelected.name}?`}
                     </Text>
                     <View style={styles.modalButton}>
                         <CustomButton
                             onPress={() => actionDeleteItem()}
                             title={"Delete"}
-                            style={styles}
+                            containerStyle={styles.buttonContainer}
+                            innerStyle={styles.buttonText}
                         />
                     </View>
                 </View>

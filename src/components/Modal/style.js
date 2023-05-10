@@ -1,4 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
+import colors from '../../constants/colors';
+import fonts from '../../constants/fonts';
 
 const styles = StyleSheet.create({
     modalContainer: {
@@ -7,13 +9,15 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
-    modalStyle: {
-        backgroundColor: "#fae3d4",
+    modal: {
+        backgroundColor: colors.light,
         margin: 20,
         borderRadius: 20,
-        padding: 40,
+        paddingTop: 10,
+        paddingHorizontal: 30,
+        paddingBottom: 30,
         alignItems: "center",
-        shadowColor: "#000",
+        shadowColor: colors.shadow,
         shadowOffset: {
             width: 0,
             height: 2,
@@ -21,26 +25,46 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
+        fontFamily: fonts.main,
     },
-    modalTextStyle: {
+    modalText: {
         fontSize: 24,
-        color: "#332e2d",
+        color: colors.secondary,
         textAlign: "center"
     },
     modalButton: {
         marginTop: 10,
     },
-    textCustom: {
-        color: "#ffffff",
+    buttonText: {
+        color:  colors.light,
         padding: 10,
         textAlign: "center",
         width: 100,
         fontSize: 20,
     },
-    buttonCustom: {
-        backgroundColor: "#ab6f9e",
+    buttonContainer: {
+        backgroundColor: colors.primary,
         borderRadius: 10
     },
+    closeContainer: {
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        marginRight: -20,
+        marginBottom: 20
+    },
+    closeButtonText: {
+        color: colors.secondary,
+        fontSize: 20,
+        width: 30,
+        textAlign: "center"
+    },
+    closeButtonContainer: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        width: "100%"
+    }
 });
 
 export default styles;
