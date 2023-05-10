@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { View, FlatList, Text, TextInput, TouchableHighlight } from 'react-native';
-import { Modal, CustomButton, ListItem } from "../../components";
+import { Modal, CustomButton, ListItem } from '../../components';
 import styles from './style';
 
-const List = ({ }) => {
+const List = ({ selectCat }) => {
 
     const [textItem, setTextItem] = useState("");
     const [list, setList] = useState([]);
@@ -57,7 +57,9 @@ const List = ({ }) => {
             <View style={styles.listContainer}>
                 <FlatList
                     data={list}
-                    renderItem={({ item }) => (<ListItem item={item} onHandleModal={onHandleModal} />)}
+                    renderItem={
+                        ({ item }) =>
+                            (<ListItem cat={item} onHandleModal={onHandleModal} selectCat={selectCat} />)}
                     keyExtractor={item => item.id}
                 />
             </View>

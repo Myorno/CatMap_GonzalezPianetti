@@ -1,20 +1,29 @@
-import React from "react";
+import React from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
 import styles from './style';
-import {CustomButton} from "../index";
+import { CustomButton } from '..';
 
-const ListItem = ({ item, onHandleModal }) => {
+const ListItem = ({ cat, onHandleModal, selectCat }) => {
 
     return (
-        <View style={styles.renderItemStyle}>
+        <View style={styles.renderItem}>
             <Text style={styles.textRenderItem}>
-                {item.name}
+                {cat.name}
             </Text>
-            <CustomButton 
-             onPress={() => onHandleModal(item)}
-             title={"X"}
-             style={styles}
-            />
+            <View>
+                <CustomButton
+                    onPress={() => selectCat(cat)}
+                    title={"view"}
+                    containerStyle={styles.viewContainer}
+                    innerStyle={styles.viewText}
+                />
+                <CustomButton
+                    onPress={() => onHandleModal(cat)}
+                    title={"delete"}
+                    containerStyle={styles.deleteContainer}
+                    innerStyle={styles.deleteText}
+                />
+            </View>
         </View >
     )
 };

@@ -1,14 +1,15 @@
-import React from "react";
+import React from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
+import styles from './style';
 
-const CustomButton = ({ title, onPress, style, disabled }) => {
+const CustomButton = ({ title, onPress, containerStyle, innerStyle, disabled }) => {
 
     return (
         <TouchableHighlight
             onPress={onPress}
             disabled={disabled} >
-            <View style={style.buttonCustom? style.buttonCustom : {}}>
-                <Text style={style.textCustom? style.textCustom : {}}>
+            <View style={containerStyle ? {...styles.default, ...containerStyle} : styles.default}>
+                <Text style={innerStyle ? innerStyle : {}}>
                     {title}
                 </Text>
             </View>

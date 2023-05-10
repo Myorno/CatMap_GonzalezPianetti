@@ -1,10 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     inputContainer: {
       height: 200,
       paddingHorizontal: 30,
       paddingTop: 80,
+      fontFamily: fonts.main,
     },
     titleContainer: {
       marginBottom: 30,
