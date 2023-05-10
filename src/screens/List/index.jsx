@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { View, FlatList, Text, TextInput, TouchableHighlight } from 'react-native';
+import { View, FlatList, Text, TextInput } from 'react-native';
 import { Modal, CustomButton, ListItem } from '../../components';
 import styles from './style';
 
-const List = ({ selectCat }) => {
+const List = ({ list, setList, selectCat }) => {
 
     const [textItem, setTextItem] = useState("");
-    const [list, setList] = useState([]);
     const [itemSelected, setItemSelected] = useState({});
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -27,11 +26,15 @@ const List = ({ selectCat }) => {
         setModalVisible(true);
     };
 
+    const onCloseModal = () => {
+        setModalVisible(false);
+    };
+
     const onHandleDelete = item => {
         setList(prevState =>
             prevState.filter(element => element.name !== item.name)
         );
-        setModalVisible(false);
+        onCloseModal();
     };
 
 
@@ -50,7 +53,10 @@ const List = ({ selectCat }) => {
                         onPress={addItem}
                         style={styles}
                         title={"Add cat"}
-                        disabled={textItem === ""} />
+                        disabled={textItem === ""}
+                        containerStyle={styles.buttonCustom}
+                        innerStyle={styles.textCustom}
+                    />
 
                 </View>
             </View>
@@ -59,7 +65,10 @@ const List = ({ selectCat }) => {
                     data={list}
                     renderItem={
                         ({ item }) =>
-                            (<ListItem cat={item} onHandleModal={onHandleModal} selectCat={selectCat} />)}
+                        (<ListItem cat={item}
+                            onCloseModal={onCloseModal}
+                            onHandleModal={onHandleModal}
+                            selectCat={selectCat} />)}
                     keyExtractor={item => item.id}
                 />
             </View>
@@ -67,6 +76,7 @@ const List = ({ selectCat }) => {
                 isVisible={modalVisible}
                 actionDeleteItem={() => onHandleDelete(itemSelected)}
                 itemSelected={itemSelected}
+                onCloseModal={onCloseModal}
             />
         </View>
     )

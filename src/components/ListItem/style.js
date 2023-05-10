@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         height: 50,
         flexDirection: "row",
         marginBottom: 25,
-        borderLeftColor: colors.primary,
+        borderLeftColor: colors.secondary,
         borderLeftWidth: 10,
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
@@ -20,26 +20,27 @@ const styles = StyleSheet.create({
     },
     textRenderItem: {
         color: colors.primary,
-        paddingHorizontal: 10,
+        fontWeight: 600,
     },
     deleteText: {
-        color: colors.primary,
-        paddingHorizontal: 10,
+        color: colors.secondary,
+        paddingHorizontal: 5,
     },
     deleteContainer: {
         backgroundColor: "transparent",
     },
     viewText: {
-        color: colors.primary,
-        paddingHorizontal: 10,
+        color: colors.secondary,
+        paddingHorizontal: 5,
     },
     viewContainer: {
         backgroundColor: "transparent",
     },
     actionsContainer: {
         display: "flex",
+        flexDirection: "row",
         justifyContent: "space-between",
-        width: "20%"
+        width: "30%"
     },
 });
 

@@ -1,9 +1,9 @@
 export default {
-    primary: "#433345",
-    secondary: "#5d5d79",
-    terciary: "#fbd3cb",
+    primary: "#5d5d79",
+    secondary: "#433345",
+    terciary: "#f5d3d9",
     error: "#f76934",
     success: "#d2f2ef",
-    shadow: "000",
-    highlight: "#fef1e9",
+    shadow: "#000",
+    light: "#fef1e9",
 }

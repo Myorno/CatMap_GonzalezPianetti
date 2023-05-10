@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import fonts from '../../constants/fonts';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
     inputContainer: {
@@ -6,12 +8,13 @@ const styles = StyleSheet.create({
       paddingHorizontal: 30,
       paddingTop: 80,
       fontFamily: fonts.main,
+      marginBottom: 10,
     },
     titleContainer: {
-      marginBottom: 30,
+      marginBottom: 25,
       fontSize: 40,
       fontWeight: "500",
-      color: "#ab6f9e",
+      color: colors.primary,
     },
     addItemContainer: {
       flexDirection: "row",
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
     },
     input: {
-      borderBottomColor: "black",
+      borderBottomColor: colors.shadow,
       borderBottomWidth: 2,
       width: 200,
     },
@@ -30,7 +33,7 @@ const styles = StyleSheet.create({
     },
     buttonCustom: {
       alignItems: 'center',
-      backgroundColor: "#ab6f9e",
+      backgroundColor: colors.primary,
       borderRadius:10,
     },
     textCustom: {

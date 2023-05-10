@@ -3,7 +3,7 @@ import { Text, View, Modal } from 'react-native';
 import styles from './style';
 import { CustomButton } from '..';
 
-const Item = ({ isVisible, actionDeleteItem, itemSelected }) => {
+const Item = ({ isVisible, onCloseModal, actionDeleteItem, itemSelected }) => {
 
     return (
         <Modal
@@ -13,6 +13,14 @@ const Item = ({ isVisible, actionDeleteItem, itemSelected }) => {
             presentationStyle="overFullScreen">
             <View style={styles.modalContainer}>
                 <View style={styles.modal}>
+                    <View style={styles.closeContainer}>
+                        <CustomButton
+                            onPress={() => onCloseModal()}
+                            title={"X"}
+                            innerStyle={styles.closeButtonText}
+                            containerStyle={styles.closeButtonContainer}
+                        />
+                    </View>
                     <Text
                         style={styles.modalText} >
                         {`Do you really want to delete ${itemSelected.name}?`}

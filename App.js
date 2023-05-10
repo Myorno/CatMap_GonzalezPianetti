@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
-import color from '../../constants/colors';
+import colors from './src/constants/colors';
 import { List, Item } from './src/screens';
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
   });
 
   const [selectedCat, setSelectedCat] = useState(null);
+  const [catList, setCatList] = useState([]);
 
   const handleCatSelection = (cat) => {
     setSelectedCat(cat);
@@ -24,8 +25,8 @@ export default function App() {
     <View style={styles.container}>
       {
         !selectedCat ?
-          <List selectCat={handleCatSelection} /> :
-          <Item selectCat={handleCatSelection} />
+          <List list={catList} setList={setCatList} selectCat={handleCatSelection} /> :
+          <Item cat={selectedCat} selectCat={handleCatSelection} />
       }
     </View>
   );
@@ -34,6 +35,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: color.highlight,
+    backgroundColor: colors.light,
   },
 });

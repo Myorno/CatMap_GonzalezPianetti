@@ -10,7 +10,7 @@ const ListItem = ({ cat, onHandleModal, selectCat }) => {
             <Text style={styles.textRenderItem}>
                 {cat.name}
             </Text>
-            <View>
+            <View style={styles.actionsContainer}>
                 <CustomButton
                     onPress={() => selectCat(cat)}
                     title={"view"}
