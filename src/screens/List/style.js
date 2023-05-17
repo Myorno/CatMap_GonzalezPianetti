@@ -4,11 +4,9 @@ import {COLORS} from '../../constants/colors';
 
 const styles = StyleSheet.create({
     inputContainer: {
-      height: 200,
       paddingHorizontal: 30,
-      paddingTop: 80,
+      paddingVertical: 20,
       fontFamily: FONTS.main,
-      marginBottom: 10,
     },
     titleContainer: {
       marginBottom: 25,

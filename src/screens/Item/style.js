@@ -9,8 +9,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
     },
     headerContainer: {
-        height: 200,
-        paddingTop: 80,
+        paddingTop: 20,
         fontFamily: FONTS.main,
         display: "flex",
         flexDirection: "row",
@@ -36,7 +35,9 @@ const styles = StyleSheet.create({
     },
     propCat: {
         color: COLORS.secondary,
-        fontSize: 16,
+        fontSize: 17,
+        paddingVertical: 10,
+        textAlign: 'left'
     }
 });
 

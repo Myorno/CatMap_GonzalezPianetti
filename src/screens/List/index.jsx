@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList, Text, TextInput } from 'react-native';
 import { Modal, ListItem } from '../../components';
 import styles from './style';
@@ -11,12 +11,17 @@ const List = ({ navigation }) => {
     const [itemSelected, setItemSelected] = useState({});
     const [modalVisible, setModalVisible] = useState(false);
 
-    const onHandleSearch = text => {
+    useEffect(() => {
         const filteredCatList = search ?
-            catList.filter((cat) =>
-                cat.name.toLowerCase() === search.toLowerCase())
+            catList.filter((cat) => {
+                return (cat.name.toLowerCase().includes(search.toLowerCase()))
+            }
+            )
             : CATS;
         setCatList(filteredCatList);
+    }, [search]);
+
+    const onHandleSearch = text => {
         setSearch(text);
     };
 
@@ -30,7 +35,7 @@ const List = ({ navigation }) => {
     };
 
     const onHandleDelete = item => {
-        setList(prevState =>
+        setCatList(prevState =>
             prevState.filter(element => element.name !== item.name)
         );
         onCloseModal();
@@ -48,7 +53,7 @@ const List = ({ navigation }) => {
                 <Text style={styles.titleContainer}>Cat List</Text>
                 <View style={styles.addItemContainer}>
                     <TextInput
-                        placeholder="New cat name"
+                        placeholder="search cat"
                         style={styles.input}
                         onChangeText={onHandleSearch}
                         value={search}
