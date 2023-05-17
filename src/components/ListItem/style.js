@@ -1,36 +1,36 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../constants/colors';
-import fonts from '../../constants/fonts';
+import {COLORS} from '../../constants/colors';
+import {FONTS} from '../../constants/fonts';
 
 const styles = StyleSheet.create({
     renderItem: {
         height: 50,
         flexDirection: "row",
         marginBottom: 25,
-        borderLeftColor: colors.secondary,
+        borderLeftColor: COLORS.secondary,
         borderLeftWidth: 10,
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
         padding: 10,
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: colors.terciary,
-        color: colors.primary,
-        fontFamily: fonts.main,
+        backgroundColor: COLORS.terciary,
+        color: COLORS.primary,
+        fontFamily: FONTS.main,
     },
     textRenderItem: {
-        color: colors.primary,
+        color: COLORS.primary,
         fontWeight: 600,
     },
     deleteText: {
-        color: colors.secondary,
+        color: COLORS.secondary,
         paddingHorizontal: 5,
     },
     deleteContainer: {
         backgroundColor: "transparent",
     },
     viewText: {
-        color: colors.secondary,
+        color: COLORS.secondary,
         paddingHorizontal: 5,
     },
     viewContainer: {

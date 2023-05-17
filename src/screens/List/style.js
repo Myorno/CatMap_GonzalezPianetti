@@ -1,20 +1,20 @@
 import { StyleSheet } from 'react-native';
-import fonts from '../../constants/fonts';
-import colors from '../../constants/colors';
+import {FONTS} from '../../constants/fonts';
+import {COLORS} from '../../constants/colors';
 
 const styles = StyleSheet.create({
     inputContainer: {
       height: 200,
       paddingHorizontal: 30,
       paddingTop: 80,
-      fontFamily: fonts.main,
+      fontFamily: FONTS.main,
       marginBottom: 10,
     },
     titleContainer: {
       marginBottom: 25,
       fontSize: 40,
       fontWeight: "500",
-      color: colors.primary,
+      color: COLORS.primary,
     },
     addItemContainer: {
       flexDirection: "row",
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
     },
     input: {
-      borderBottomColor: colors.shadow,
+      borderBottomColor: COLORS.shadow,
       borderBottomWidth: 2,
       width: 200,
     },
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
     buttonCustom: {
       alignItems: 'center',
-      backgroundColor: colors.primary,
+      backgroundColor: COLORS.primary,
       borderRadius:10,
     },
     textCustom: {

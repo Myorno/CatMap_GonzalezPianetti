@@ -1,8 +1,8 @@
 import {
     StyleSheet
 } from 'react-native';
-import colors from '../../constants/colors';
-import fonts from '../../constants/fonts';
+import {COLORS} from '../../constants/colors';
+import {FONTS} from '../../constants/fonts';
 
 const styles = StyleSheet.create({
     mainContainer: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     headerContainer: {
         height: 200,
         paddingTop: 80,
-        fontFamily: fonts.main,
+        fontFamily: FONTS.main,
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         fontSize: 32,
         fontWeight: "500",
-        color: colors.primary,
+        color: COLORS.primary,
         maxWidth: "80%"
     },
     backContainer: {
@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
     },
     backText: {
         fontWeight: "600",
-        color: colors.secondary,
+        color: COLORS.secondary,
         fontSize: 30
     },
     propCat: {
-        color: colors.secondary,
+        color: COLORS.secondary,
         fontSize: 16,
     }
 });
