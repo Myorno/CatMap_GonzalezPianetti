@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../constants/colors';
-import fonts from '../../constants/fonts';
+import {COLORS} from '../../constants/colors';
+import {FONTS} from '../../constants/fonts';
 
 const styles = StyleSheet.create({
     modalContainer: {
@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
     modal: {
-        backgroundColor: colors.light,
+        backgroundColor: COLORS.light,
         margin: 20,
         borderRadius: 20,
         paddingTop: 10,
         paddingHorizontal: 30,
         paddingBottom: 30,
         alignItems: "center",
-        shadowColor: colors.shadow,
+        shadowColor: COLORS.shadow,
         shadowOffset: {
             width: 0,
             height: 2,
@@ -25,25 +25,25 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        fontFamily: fonts.main,
+        fontFamily: FONTS.main,
     },
     modalText: {
         fontSize: 24,
-        color: colors.secondary,
+        color: COLORS.secondary,
         textAlign: "center"
     },
     modalButton: {
         marginTop: 10,
     },
     buttonText: {
-        color:  colors.light,
+        color:  COLORS.light,
         padding: 10,
         textAlign: "center",
         width: 100,
         fontSize: 20,
     },
     buttonContainer: {
-        backgroundColor: colors.primary,
+        backgroundColor: COLORS.primary,
         borderRadius: 10
     },
     closeContainer: {
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     closeButtonText: {
-        color: colors.secondary,
+        color: COLORS.secondary,
         fontSize: 20,
         width: 30,
         textAlign: "center"

@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList, Text, TextInput } from 'react-native';
-import { Modal, CustomButton, ListItem } from '../../components';
+import { Modal, ListItem } from '../../components';
 import styles from './style';
+import { CATS } from '../../data/cats'
 
-const List = ({ list, setList, selectCat }) => {
+const List = ({ navigation }) => {
 
-    const [textItem, setTextItem] = useState("");
+    const [catList, setCatList] = useState(CATS);
+    const [search, setSearch] = useState("");
     const [itemSelected, setItemSelected] = useState({});
     const [modalVisible, setModalVisible] = useState(false);
 
-    const onHandleChangeText = text => {
-        setTextItem(text);
-    };
+    useEffect(() => {
+        const filteredCatList = search ?
+            catList.filter((cat) => {
+                return (cat.name.toLowerCase().includes(search.toLowerCase()))
+            }
+            )
+            : CATS;
+        setCatList(filteredCatList);
+    }, [search]);
 
-    const addItem = () => {
-        setList(prevState => [
-            ...prevState,
-            { name: textItem, id: Math.random().toString() },
-        ]);
-        setTextItem("");
+    const onHandleSearch = text => {
+        setSearch(text);
     };
 
     const onHandleModal = item => {
@@ -31,12 +35,17 @@ const List = ({ list, setList, selectCat }) => {
     };
 
     const onHandleDelete = item => {
-        setList(prevState =>
+        setCatList(prevState =>
             prevState.filter(element => element.name !== item.name)
         );
         onCloseModal();
     };
 
+    const selectCat = (item) => {
+        navigation.navigate("Item", {
+            cat: item
+        });
+    };
 
     return (
         <View>
@@ -44,31 +53,23 @@ const List = ({ list, setList, selectCat }) => {
                 <Text style={styles.titleContainer}>Cat List</Text>
                 <View style={styles.addItemContainer}>
                     <TextInput
-                        placeholder="New cat name"
+                        placeholder="search cat"
                         style={styles.input}
-                        onChangeText={onHandleChangeText}
-                        value={textItem}
+                        onChangeText={onHandleSearch}
+                        value={search}
                     />
-                    <CustomButton
-                        onPress={addItem}
-                        style={styles}
-                        title={"Add cat"}
-                        disabled={textItem === ""}
-                        containerStyle={styles.buttonCustom}
-                        innerStyle={styles.textCustom}
-                    />
-
                 </View>
             </View>
             <View style={styles.listContainer}>
                 <FlatList
-                    data={list}
+                    data={catList}
                     renderItem={
                         ({ item }) =>
                         (<ListItem cat={item}
                             onCloseModal={onCloseModal}
                             onHandleModal={onHandleModal}
-                            selectCat={selectCat} />)}
+                            selectCat={selectCat}
+                        />)}
                     keyExtractor={item => item.id}
                 />
             </View>
