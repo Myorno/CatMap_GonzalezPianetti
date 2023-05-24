@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, FlatList, Text, TextInput } from 'react-native';
 import { Modal, ListItem } from '../../components';
 import styles from './style';
-import { CATS } from '../../data/cats'
+import { CATS } from '../../data/cats';
+import { CAT_COLORS } from '../../data/catColors';
 
 const List = ({ navigation }) => {
 
@@ -36,21 +37,25 @@ const List = ({ navigation }) => {
 
     const onHandleDelete = item => {
         setCatList(prevState =>
-            prevState.filter(element => element.name !== item.name)
+            prevState.filter(element => element.id !== item.id)
         );
         onCloseModal();
     };
 
+    const getCatColor = (cat) => {
+        return CAT_COLORS.find((catColor)=> catColor.id === cat.mainColor);
+    }
+
     const selectCat = (item) => {
         navigation.navigate("Item", {
-            cat: item
+            cat: item,
+            catColor: getCatColor(item)
         });
     };
 
     return (
-        <View>
+        <View style={styles.mainContainer}>
             <View style={styles.inputContainer}>
-                <Text style={styles.titleContainer}>Cat List</Text>
                 <View style={styles.addItemContainer}>
                     <TextInput
                         placeholder="search cat"
@@ -69,6 +74,7 @@ const List = ({ navigation }) => {
                             onCloseModal={onCloseModal}
                             onHandleModal={onHandleModal}
                             selectCat={selectCat}
+                            catColor={getCatColor(item)}
                         />)}
                     keyExtractor={item => item.id}
                 />

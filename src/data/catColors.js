@@ -1,26 +1,33 @@
 export const CAT_COLORS = [
     {
         id: '1',
-        color: 'white'
+        colorName: 'white',
+        color: '#fff'
     },
     {
         id: '2',
-        color: 'black'
+        colorName: 'black',
+        color: '#000'
     },
     {
         id: '3',
-        color: 'grey'
+        colorName: 'grey',
+        color: '#666'
     },
     {
         id: '4',
-        color: 'orange'
+        colorName: 'orange',
+        color: '#ff781f'
+
     },
     {
         id: '5',
-        color: 'calico'
+        colorName: 'calico',
+        color: '#b2560d'
     },
     {
         id: '6',
-        color: 'brown'
+        colorName: 'brown',
+        color: '#30221d'
     },
 ];

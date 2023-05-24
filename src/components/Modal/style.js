@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
     modal: {
-        backgroundColor: COLORS.light,
+        backgroundColor: COLORS.background,
         margin: 20,
         borderRadius: 20,
         paddingTop: 10,
         paddingHorizontal: 30,
         paddingBottom: 30,
         alignItems: "center",
-        shadowColor: COLORS.shadow,
+        shadowColor: COLORS.black,
         shadowOffset: {
             width: 0,
             height: 2,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         fontFamily: FONTS.main,
     },
     modalText: {
-        fontSize: 24,
+        fontSize: 22,
         color: COLORS.secondary,
         textAlign: "center"
     },
@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     buttonText: {
-        color:  COLORS.light,
+        color:  COLORS.white,
         padding: 10,
         textAlign: "center",
         width: 100,
-        fontSize: 20,
+        fontSize: 17,
     },
     buttonContainer: {
         backgroundColor: COLORS.primary,
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "100%",
         marginRight: -20,
-        marginBottom: 20
+        marginBottom: 10
     },
     closeButtonText: {
         color: COLORS.secondary,
-        fontSize: 20,
+        fontSize: 17,
         width: 30,
         textAlign: "center"
     },

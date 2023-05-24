@@ -13,9 +13,9 @@ export const CATS = [
     },
     {
         id: '3',
-        mainColor: '1',
-        name: 'Nieve',
-        description: 'Agresivo, no mimar!'
+        mainColor: '5',
+        name: 'Bartola',
+        description: 'Agresiva, no mimar!'
     },
     {
         id: '4',
