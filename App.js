@@ -1,5 +1,6 @@
 import { useFonts } from 'expo-font';
-import CatNavigator from './src/navigation/CatNavigator';
+import { NavigationContainer } from "@react-navigation/native";
+import TabNavigator from './src/navigation/TabNavigator';
 
 export default function App() {
 
@@ -12,6 +13,8 @@ export default function App() {
   }
 
   return (
-      <CatNavigator />
+    <NavigationContainer>
+      <TabNavigator />
+    </NavigationContainer>
   );
 }
