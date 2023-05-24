@@ -6,7 +6,8 @@ import {FONTS} from '../../constants/fonts';
 
 const styles = StyleSheet.create({
     mainContainer: {
-        paddingHorizontal: 30,
+        flex: 1,
+        backgroundColor: COLORS.background,
     },
     headerContainer: {
         paddingTop: 20,

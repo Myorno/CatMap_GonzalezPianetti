@@ -5,8 +5,9 @@ import styles from './style';
 const Home = ({ route }) => {
 
     return (
-        <View>
+        <View style={styles.mainContainer}>
             <View>
+                <Text>Map Container</Text>
             </View>
         </View>
     )

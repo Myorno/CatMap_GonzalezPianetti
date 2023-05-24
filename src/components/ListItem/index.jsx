@@ -1,15 +1,20 @@
 import React from 'react';
-import { Text, View, TouchableHighlight } from 'react-native';
+import { Text, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './style';
 import { CustomButton } from '..';
 
-const ListItem = ({ cat, onHandleModal, selectCat }) => {
+
+const ListItem = ({ cat, onHandleModal, selectCat, catColor }) => {
 
     return (
         <View style={styles.renderItem}>
-            <Text style={styles.textRenderItem}>
-                {cat.name}
-            </Text>
+            <View style={styles.catContainer}>
+                <MaterialCommunityIcons name="cat" size={36} color={catColor.color} />
+                <Text style={styles.textRenderItem}>
+                    {cat.name}
+                </Text>
+            </View>
             <View style={styles.actionsContainer}>
                 <CustomButton
                     onPress={() => selectCat(cat)}

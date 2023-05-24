@@ -4,43 +4,48 @@ import {FONTS} from '../../constants/fonts';
 
 const styles = StyleSheet.create({
     renderItem: {
-        height: 50,
+        height: 80,
         flexDirection: "row",
         marginBottom: 25,
-        borderLeftColor: COLORS.secondary,
-        borderLeftWidth: 10,
-        borderTopRightRadius: 10,
-        borderBottomRightRadius: 10,
+        borderRadius: 10,
         padding: 10,
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: COLORS.terciary,
         color: COLORS.primary,
-        fontFamily: FONTS.main,
     },
+    catContainer: {
+        width: 100,
+        flexDirection: "row",
+        alignItems: "center",
+    }, 
     textRenderItem: {
         color: COLORS.primary,
-        fontWeight: 600,
+        fontWeight: "bold",
+        paddingLeft: 5,
+        fontFamily: FONTS.main,
+        fontSize: 16,
     },
     deleteText: {
         color: COLORS.secondary,
-        paddingHorizontal: 5,
+        padding: 5,
+        fontFamily: FONTS.main,
     },
     deleteContainer: {
         backgroundColor: "transparent",
     },
     viewText: {
         color: COLORS.secondary,
-        paddingHorizontal: 5,
+        fontFamily: FONTS.main,
+        padding: 5,
     },
     viewContainer: {
         backgroundColor: "transparent",
     },
     actionsContainer: {
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         justifyContent: "space-between",
-        width: "30%"
     },
 });
 
