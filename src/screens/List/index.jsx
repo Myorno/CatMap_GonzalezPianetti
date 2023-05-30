@@ -1,92 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { View, FlatList, Text, TextInput } from 'react-native';
-import { Modal, ListItem } from '../../components';
-import styles from './style';
-import { CATS } from '../../data/cats';
-import { CAT_COLORS } from '../../data/catColors';
+import React, { useEffect, useState } from "react";
+import { View, FlatList, TextInput } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { Modal, ListItem } from "../../components";
+import { selectedCat } from "../../store/actions/item.action";
+import styles from "./style";
 
 const List = ({ navigation }) => {
+  const cats = useSelector((state) => state.items.catList);
+  const catColors = useSelector((state) => state.items.catColors);
+  const dispatch = useDispatch();
 
-    const [catList, setCatList] = useState(CATS);
-    const [search, setSearch] = useState("");
-    const [itemSelected, setItemSelected] = useState({});
-    const [modalVisible, setModalVisible] = useState(false);
+  const [catList, setCatList] = useState(cats);
+  const [search, setSearch] = useState("");
+  const [itemSelected, setItemSelected] = useState({});
+  const [modalVisible, setModalVisible] = useState(false);
 
-    useEffect(() => {
-        const filteredCatList = search ?
-            catList.filter((cat) => {
-                return (cat.name.toLowerCase().includes(search.toLowerCase()))
-            }
-            )
-            : CATS;
-        setCatList(filteredCatList);
-    }, [search]);
+  useEffect(() => {
+    const filteredCatList = search
+      ? catList.filter((cat) => {
+          return cat.name.toLowerCase().includes(search.toLowerCase());
+        })
+      : cats;
+    setCatList(filteredCatList);
+  }, [search]);
 
-    const onHandleSearch = text => {
-        setSearch(text);
-    };
+  const onHandleSearch = (text) => {
+    setSearch(text);
+  };
 
-    const onHandleModal = item => {
-        setItemSelected(item);
-        setModalVisible(true);
-    };
+  const onHandleModal = (item) => {
+    setItemSelected(item);
+    setModalVisible(true);
+    0;
+  };
 
-    const onCloseModal = () => {
-        setModalVisible(false);
-    };
+  const onCloseModal = () => {
+    setModalVisible(false);
+  };
 
-    const onHandleDelete = item => {
-        setCatList(prevState =>
-            prevState.filter(element => element.id !== item.id)
-        );
-        onCloseModal();
-    };
+  const onHandleDelete = (item) => {
+    setCatList((prevState) =>
+      prevState.filter((element) => element.id !== item.id)
+    );
+    onCloseModal();
+  };
 
-    const getCatColor = (cat) => {
-        return CAT_COLORS.find((catColor)=> catColor.id === cat.mainColor);
-    }
+  const getCatColor = (cat) => {
+    return catColors.find((catColor) => catColor.id === cat.mainColor);
+  };
 
-    const selectCat = (item) => {
-        navigation.navigate("Item", {
-            cat: item,
-            catColor: getCatColor(item)
-        });
-    };
+  const selectCat = (cat, color) => {
+    dispatch(selectedCat(cat, color));
+    navigation.navigate("Item", {
+      name: cat.name,
+    });
+  };
 
-    return (
-        <View style={styles.mainContainer}>
-            <View style={styles.inputContainer}>
-                <View style={styles.addItemContainer}>
-                    <TextInput
-                        placeholder="search cat"
-                        style={styles.input}
-                        onChangeText={onHandleSearch}
-                        value={search}
-                    />
-                </View>
-            </View>
-            <View style={styles.listContainer}>
-                <FlatList
-                    data={catList}
-                    renderItem={
-                        ({ item }) =>
-                        (<ListItem cat={item}
-                            onCloseModal={onCloseModal}
-                            onHandleModal={onHandleModal}
-                            selectCat={selectCat}
-                            catColor={getCatColor(item)}
-                        />)}
-                    keyExtractor={item => item.id}
-                />
-            </View>
-            <Modal
-                isVisible={modalVisible}
-                actionDeleteItem={() => onHandleDelete(itemSelected)}
-                itemSelected={itemSelected}
-                onCloseModal={onCloseModal}
-            />
+  return (
+    <View style={styles.mainContainer}>
+      <View style={styles.inputContainer}>
+        <View style={styles.addItemContainer}>
+          <TextInput
+            placeholder="search cat"
+            style={styles.input}
+            onChangeText={onHandleSearch}
+            value={search}
+          />
         </View>
-    )
+      </View>
+      <View style={styles.listContainer}>
+        <FlatList
+          data={catList}
+          renderItem={({ item }) => (
+            <ListItem
+              cat={item}
+              onCloseModal={onCloseModal}
+              onHandleModal={onHandleModal}
+              selectCat={selectCat}
+              catColor={getCatColor(item)}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
+      <Modal
+        isVisible={modalVisible}
+        actionDeleteItem={() => onHandleDelete(itemSelected)}
+        itemSelected={itemSelected}
+        onCloseModal={onCloseModal}
+      />
+    </View>
+  );
 };
 
 export default List;
