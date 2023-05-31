@@ -1,9 +1,11 @@
 import ListItem from './ListItem';
 import Modal from './Modal';
-import CustomButton from './CustomButton';
+import TextButton from './TextButton';
+import CatProp from './CatProp';
 
 export {
     ListItem,
     Modal,
-    CustomButton
+    TextButton,
+    CatProp
 }
