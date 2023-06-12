@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, FlatList, TextInput } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ListItem } from "../../components";
-import { selectedCat } from "../../store/actions/item.action";
+import { selectedCat, removeCat } from "../../store/actions/item.action";
 import styles from "./style";
 
 const List = ({ navigation }) => {
@@ -38,10 +38,8 @@ const List = ({ navigation }) => {
     setModalVisible(false);
   };
 
-  const onHandleDelete = (item) => {
-    setCatList((prevState) =>
-      prevState.filter((element) => element.id !== item.id)
-    );
+  const onHandleDelete = (catId) => {
+    dispatch(removeCat(catId));
     onCloseModal();
   };
 
@@ -85,7 +83,7 @@ const List = ({ navigation }) => {
       </View>
       <Modal
         isVisible={modalVisible}
-        actionDeleteItem={() => onHandleDelete(itemSelected)}
+        actionDeleteItem={() => onHandleDelete(itemSelected.id)}
         itemSelected={itemSelected}
         onCloseModal={onCloseModal}
       />
