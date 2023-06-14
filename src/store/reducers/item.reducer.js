@@ -8,6 +8,7 @@ const initialState = {
   selected: {
     cat: null,
     catColor: null,
+    catCountry: null,
   },
 };
 
@@ -19,6 +20,7 @@ const ItemReducer = (state = initialState, action) => {
         selected: {
           cat: action.cat,
           catColor: action.catColor,
+          catCountry: action.catCountry
         },
       };
     case REMOVE_ITEM:

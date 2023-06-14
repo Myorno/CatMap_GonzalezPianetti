@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./style";
 import TextButton from "../TextButton";
 
-const ListItem = ({ cat, onHandleModal, selectCat, catColor }) => {
+const ListItem = ({ cat, onHandleModal, selectCat, catColor, catCountry }) => {
   return (
     <View style={styles.renderItem}>
       <View style={styles.catContainer}>
@@ -13,7 +13,7 @@ const ListItem = ({ cat, onHandleModal, selectCat, catColor }) => {
       </View>
       <View style={styles.actionsContainer}>
         <TextButton
-          onPress={() => selectCat(cat, catColor)}
+          onPress={() => selectCat(cat, catColor, catCountry)}
           title={"view"}
           containerStyle={styles.viewContainer}
           innerStyle={styles.viewText}

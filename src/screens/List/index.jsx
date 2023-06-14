@@ -8,6 +8,7 @@ import styles from "./style";
 const List = ({ navigation }) => {
   const cats = useSelector((state) => state.items.catList);
   const catColors = useSelector((state) => state.items.catColors);
+  const countries = useSelector((state) => state.locationInfo.allCountries);
   const dispatch = useDispatch();
 
   const [catList, setCatList] = useState(cats);
@@ -47,6 +48,10 @@ const List = ({ navigation }) => {
     return catColors.find((catColor) => catColor.id === cat.mainColor);
   };
 
+  const getCatCountry = () => {
+    return countries.find((country) => country.id === cat.country).name;
+  };
+
   const selectCat = (cat, color) => {
     dispatch(selectedCat(cat, color));
     navigation.navigate("Item", {
@@ -76,6 +81,7 @@ const List = ({ navigation }) => {
               onHandleModal={onHandleModal}
               selectCat={selectCat}
               catColor={getCatColor(item)}
+              catCountry={getCatCountry(item)}
             />
           )}
           keyExtractor={(item) => item.id}

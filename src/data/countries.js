@@ -1,12 +1,17 @@
 export const COUNTRIES = [
   {
     id: "1",
-    countryName: "argentina",
+    name: "argentina",
     code: "ar",
   },
   {
     id: "2",
-    countryName: "mexico",
-    code: "mex",
+    name: "mexico",
+    code: "mx",
+  },
+  {
+    id: "3",
+    name: "colombia",
+    code: "co",
   },
 ];
