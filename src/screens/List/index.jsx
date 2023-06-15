@@ -11,7 +11,7 @@ const List = ({ navigation }) => {
   const countries = useSelector((state) => state.locationInfo.allCountries);
   const dispatch = useDispatch();
 
-  const [catList, setCatList] = useState(cats);
+  const [catList, setCatList] = useState([]);
   const [search, setSearch] = useState("");
   const [itemSelected, setItemSelected] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,6 +24,10 @@ const List = ({ navigation }) => {
       : cats;
     setCatList(filteredCatList);
   }, [search]);
+
+  useEffect(() => {
+    setCatList(cats);
+  }, [cats]);
 
   const onHandleSearch = (text) => {
     setSearch(text);
@@ -48,7 +52,7 @@ const List = ({ navigation }) => {
     return catColors.find((catColor) => catColor.id === cat.mainColor);
   };
 
-  const getCatCountry = () => {
+  const getCatCountry = (cat) => {
     return countries.find((country) => country.id === cat.country).name;
   };
 

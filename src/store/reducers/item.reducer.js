@@ -24,13 +24,13 @@ const ItemReducer = (state = initialState, action) => {
         },
       };
     case REMOVE_ITEM:
-      const filteredCatList = catList.filter((item) => item.id !== action.cat);
+      const filteredCatList = state.catList.filter((item) => item.id !== action.catId);
       return {
         ...state,
         catList: filteredCatList,
       };
     case ADD_ITEM:
-      const newCatList = [...catList, action.cat];
+      const newCatList = [...state.catList, action.cat];
       return {
         ...state,
         catList: newCatList,

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import * as Location from "expo-location";
 import { setCountry } from "../../store/actions/location.action";
 import styles from "./style";
-import { CatMap } from "../../components";
+import { CatMap, Loading } from "../../components";
 
 const Home = ({ route }) => {
   const dispatch = useDispatch();
@@ -29,8 +29,8 @@ const Home = ({ route }) => {
           getCountry(newUserLocation)
             .then((countryCode) => {
               setUserLocation(newUserLocation);
-              setLoading(false);
               countryCode && dispatch(setCountry(countryCode.toLowerCase()));
+              setLoading(false);
             })
             .catch((error) => {
               console.log(error);
@@ -45,7 +45,6 @@ const Home = ({ route }) => {
   const getLocation = async () => {
     const isLocationOk = await veryPermissions();
     let locationRes = {};
-    console.log("locationRes", locationRes);
     if (isLocationOk) {
       locationRes = await Location.getCurrentPositionAsync({});
     }
@@ -56,6 +55,7 @@ const Home = ({ route }) => {
     const { status } = await Location.requestForegroundPermissionsAsync();
 
     if (status !== "granted") {
+      Alert.alert("We need location permissions", [{ text: "Ok" }]);
       return false;
     }
     return true;
@@ -72,8 +72,10 @@ const Home = ({ route }) => {
 
   return (
     <View style={styles.mainContainer}>
-      {!loading && (
+      {!loading ? (
         <CatMap userLocation={userLocation} catsFromCountry={catsFromCountry} />
+      ) : (
+        <Loading />
       )}
     </View>
   );

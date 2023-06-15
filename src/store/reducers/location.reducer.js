@@ -11,7 +11,7 @@ const initialState = {
 const ItemReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_COUNTRY:
-      const country = COUNTRIES.find((country) => country.code === action.countryCode);
+      const country = state.allCountries.find((country) => country.code === action.countryCode);
       const filteredCatList = CATS.filter((item) => item.country === country.id);
       return {
         ...state,
