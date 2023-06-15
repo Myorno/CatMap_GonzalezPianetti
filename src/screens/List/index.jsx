@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { View, FlatList, TextInput } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ListItem } from "../../components";
-import { selectedCat } from "../../store/actions/item.action";
+import { selectedCat, removeCat } from "../../store/actions/item.action";
 import styles from "./style";
 
 const List = ({ navigation }) => {
   const cats = useSelector((state) => state.items.catList);
   const catColors = useSelector((state) => state.items.catColors);
+  const countries = useSelector((state) => state.locationInfo.allCountries);
   const dispatch = useDispatch();
 
-  const [catList, setCatList] = useState(cats);
+  const [catList, setCatList] = useState([]);
   const [search, setSearch] = useState("");
   const [itemSelected, setItemSelected] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,6 +24,10 @@ const List = ({ navigation }) => {
       : cats;
     setCatList(filteredCatList);
   }, [search]);
+
+  useEffect(() => {
+    setCatList(cats);
+  }, [cats]);
 
   const onHandleSearch = (text) => {
     setSearch(text);
@@ -38,15 +43,17 @@ const List = ({ navigation }) => {
     setModalVisible(false);
   };
 
-  const onHandleDelete = (item) => {
-    setCatList((prevState) =>
-      prevState.filter((element) => element.id !== item.id)
-    );
+  const onHandleDelete = (catId) => {
+    dispatch(removeCat(catId));
     onCloseModal();
   };
 
   const getCatColor = (cat) => {
     return catColors.find((catColor) => catColor.id === cat.mainColor);
+  };
+
+  const getCatCountry = (cat) => {
+    return countries.find((country) => country.id === cat.country).name;
   };
 
   const selectCat = (cat, color) => {
@@ -78,6 +85,7 @@ const List = ({ navigation }) => {
               onHandleModal={onHandleModal}
               selectCat={selectCat}
               catColor={getCatColor(item)}
+              catCountry={getCatCountry(item)}
             />
           )}
           keyExtractor={(item) => item.id}
@@ -85,7 +93,7 @@ const List = ({ navigation }) => {
       </View>
       <Modal
         isVisible={modalVisible}
-        actionDeleteItem={() => onHandleDelete(itemSelected)}
+        actionDeleteItem={() => onHandleDelete(itemSelected.id)}
         itemSelected={itemSelected}
         onCloseModal={onCloseModal}
       />
