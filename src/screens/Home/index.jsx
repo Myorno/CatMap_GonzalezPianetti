@@ -70,6 +70,11 @@ const Home = ({ route }) => {
     return resCountryCode;
   };
 
+  const clickMapLocation = (event) => {
+    const { latitude, longitude } = event.nativeEvent.coordinate;
+    console.log("Clicked Location:", latitude, longitude);
+  };
+
   return (
     <View style={styles.mainContainer}>
       {!loading ? (

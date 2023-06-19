@@ -6,6 +6,7 @@ const initialState = {
   allCountries: COUNTRIES,
   catsFromCountry: [],
   country: "",
+  newCatLocation: null,
 };
 
 const ItemReducer = (state = initialState, action) => {
@@ -18,6 +19,11 @@ const ItemReducer = (state = initialState, action) => {
         catsFromCountry: filteredCatList,
         country: country.code,
       };
+      case SET_NEW_LOCATION:
+        return {
+          ...state,
+          newCatLocation: country.location,
+        };
 
     default:
       return state;
